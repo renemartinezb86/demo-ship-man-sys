@@ -1,0 +1,16 @@
+version: '2'
+services:
+  shipmanagementsystem-mongodb:
+    image: mongo:4.0.10
+    ports:
+      - '27017:27017'
+    command: mongos --configdb shipmanagementsystem-mongodb-config
+  shipmanagementsystem-mongodb-node:
+    build:
+      context: .
+      dockerfile: mongodb/MongoDB.Dockerfile
+    command: mongod --replSet rs1 --noprealloc --smallfiles
+  shipmanagementsystem-mongodb-config:
+    image: mongo:4.0.10
+    container_name: shipmanagementsystem-mongodb-config
+    command: mongod --noprealloc --smallfiles --configsvr --dbpath /data/db
