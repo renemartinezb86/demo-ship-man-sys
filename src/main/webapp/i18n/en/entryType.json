@@ -1,0 +1,10 @@
+{
+  "shipManagementSystemApp": {
+    "EntryType": {
+      "null": "",
+      "COMMAND": "COMMAND",
+      "COMMUNICATION": "COMMUNICATION",
+      "TASK": "TASK"
+    }
+  }
+}

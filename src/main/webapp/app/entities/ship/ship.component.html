@@ -19,6 +19,7 @@
             <tr>
             <th><span jhiTranslate="global.field.id">ID</span></th>
             <th><span jhiTranslate="shipManagementSystemApp.ship.shipName">Ship Name</span></th>
+            <th><span jhiTranslate="shipManagementSystemApp.ship.location">Location</span></th>
             <th></th>
             </tr>
             </thead>
@@ -26,6 +27,11 @@
             <tr *ngFor="let ship of ships ;trackBy: trackId">
                 <td><a [routerLink]="['/ship', ship.id, 'view' ]">{{ship.id}}</a></td>
                 <td>{{ship.shipName}}</td>
+                <td>
+                    <div *ngIf="ship.location">
+                        <a [routerLink]="['../location', ship.location?.id, 'view' ]" >{{ship.location?.id}}</a>
+                    </div>
+                </td>
                 <td class="text-right">
                     <div class="btn-group">
                         <button type="submit"

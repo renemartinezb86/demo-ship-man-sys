@@ -16,7 +16,9 @@
       "detail": {
         "title": "Ship"
       },
-      "shipName": "Ship Name"
+      "shipName": "Ship Name",
+      "location": "Location",
+      "marine": "Marine"
     }
   }
 }
