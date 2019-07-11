@@ -40,7 +40,7 @@
             "relationshipName": "job"
         }
     ],
-    "changelogDate": "20190711134549",
+    "changelogDate": "20190711140032",
     "entityTableName": "marine",
     "dto": "no",
     "pagination": "infinite-scroll",

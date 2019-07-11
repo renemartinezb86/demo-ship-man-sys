@@ -33,7 +33,7 @@
             "ownerSide": true
         }
     ],
-    "changelogDate": "20190711134551",
+    "changelogDate": "20190711140034",
     "entityTableName": "ship_log",
     "dto": "no",
     "pagination": "infinite-scroll",
