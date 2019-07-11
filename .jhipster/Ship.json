@@ -25,7 +25,7 @@
             "relationshipName": "marine"
         }
     ],
-    "changelogDate": "20190711134547",
+    "changelogDate": "20190711140030",
     "entityTableName": "ship",
     "dto": "no",
     "pagination": "no",
