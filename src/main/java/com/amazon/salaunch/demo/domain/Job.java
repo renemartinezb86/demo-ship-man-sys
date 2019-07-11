@@ -1,0 +1,153 @@
+package com.amazon.salaunch.demo.domain;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Field;
+import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.data.mongodb.core.mapping.DBRef;
+
+import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
+
+/**
+ * A Job.
+ */
+@Document(collection = "job")
+public class Job implements Serializable {
+
+    private static final long serialVersionUID = 1L;
+
+    @Id
+    private String id;
+
+    @Field("job_title")
+    private String jobTitle;
+
+    @Field("specialty")
+    private String specialty;
+
+    @Field("priority")
+    private Long priority;
+
+    @DBRef
+    @Field("marine")
+    @JsonIgnoreProperties("jobs")
+    private Marine marine;
+
+    @DBRef
+    @Field("tasks")
+    private Set<Task> tasks = new HashSet<>();
+
+    // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public String getJobTitle() {
+        return jobTitle;
+    }
+
+    public Job jobTitle(String jobTitle) {
+        this.jobTitle = jobTitle;
+        return this;
+    }
+
+    public void setJobTitle(String jobTitle) {
+        this.jobTitle = jobTitle;
+    }
+
+    public String getSpecialty() {
+        return specialty;
+    }
+
+    public Job specialty(String specialty) {
+        this.specialty = specialty;
+        return this;
+    }
+
+    public void setSpecialty(String specialty) {
+        this.specialty = specialty;
+    }
+
+    public Long getPriority() {
+        return priority;
+    }
+
+    public Job priority(Long priority) {
+        this.priority = priority;
+        return this;
+    }
+
+    public void setPriority(Long priority) {
+        this.priority = priority;
+    }
+
+    public Marine getMarine() {
+        return marine;
+    }
+
+    public Job marine(Marine marine) {
+        this.marine = marine;
+        return this;
+    }
+
+    public void setMarine(Marine marine) {
+        this.marine = marine;
+    }
+
+    public Set<Task> getTasks() {
+        return tasks;
+    }
+
+    public Job tasks(Set<Task> tasks) {
+        this.tasks = tasks;
+        return this;
+    }
+
+    public Job addTask(Task task) {
+        this.tasks.add(task);
+        task.getJobs().add(this);
+        return this;
+    }
+
+    public Job removeTask(Task task) {
+        this.tasks.remove(task);
+        task.getJobs().remove(this);
+        return this;
+    }
+
+    public void setTasks(Set<Task> tasks) {
+        this.tasks = tasks;
+    }
+    // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (!(o instanceof Job)) {
+            return false;
+        }
+        return id != null && id.equals(((Job) o).id);
+    }
+
+    @Override
+    public int hashCode() {
+        return 31;
+    }
+
+    @Override
+    public String toString() {
+        return "Job{" +
+            "id=" + getId() +
+            ", jobTitle='" + getJobTitle() + "'" +
+            ", specialty='" + getSpecialty() + "'" +
+            ", priority=" + getPriority() +
+            "}";
+    }
+}

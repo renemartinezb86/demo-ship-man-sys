@@ -1,0 +1,45 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="location">
+            <h2><span jhiTranslate="shipManagementSystemApp.location.detail.title">Location</span> {{location.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="shipManagementSystemApp.location.seaQuadrant">Sea Quadrant</span></dt>
+                <dd>
+                    <span>{{location.seaQuadrant}}</span>
+                </dd>
+                <dt><span jhiTranslate="shipManagementSystemApp.location.friendlys">Friendlys</span></dt>
+                <dd>
+                    <span>{{location.friendlys}}</span>
+                </dd>
+                <dt><span jhiTranslate="shipManagementSystemApp.location.hostiles">Hostiles</span></dt>
+                <dd>
+                    <span>{{location.hostiles}}</span>
+                </dd>
+                <dt><span jhiTranslate="shipManagementSystemApp.location.status">Status</span></dt>
+                <dd>
+                    <span>{{location.status}}</span>
+                </dd>
+                <dt><span jhiTranslate="shipManagementSystemApp.location.continent">Continent</span></dt>
+                <dd>
+                    <div *ngIf="location.continent">
+                        <a [routerLink]="['/continent', location.continent?.id, 'view']">{{location.continent?.id}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/location', location.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

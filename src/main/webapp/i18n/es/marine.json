@@ -1,0 +1,29 @@
+{
+  "shipManagementSystemApp": {
+    "marine": {
+      "home": {
+        "title": "Marines",
+        "createLabel": "Crear nuevo Marine",
+        "createOrEditLabel": "Crear o editar Marine",
+        "notFound": "No Marine found"
+      },
+      "created": "Un nuevo Marine ha sido creado con el identificador {{ param }}",
+      "updated": "Un Marine ha sido actualizado con el identificador {{ param }}",
+      "deleted": "Un Marine ha sido eliminado con el identificador {{ param }}",
+      "delete": {
+        "question": "¿Seguro que quiere eliminar Marine {{ id }}?"
+      },
+      "detail": {
+        "title": "Marine"
+      },
+      "firstName": "First Name",
+      "lastName": "Last Name",
+      "email": "Email",
+      "phoneNumber": "Phone Number",
+      "hireDate": "Hire Date",
+      "rank": "Rank",
+      "ship": "Ship",
+      "job": "Job"
+    }
+  }
+}

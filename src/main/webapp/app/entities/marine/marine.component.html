@@ -1,0 +1,73 @@
+<div>
+    <h2 id="page-heading">
+        <span jhiTranslate="shipManagementSystemApp.marine.home.title">Marines</span>
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-marine" [routerLink]="['/marine/new']">
+            <fa-icon [icon]="'plus'"></fa-icon>
+            <span  jhiTranslate="shipManagementSystemApp.marine.home.createLabel">
+            Create new Marine
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <br/>
+    <div class="alert alert-warning" *ngIf="marines?.length === 0">
+        <span jhiTranslate="shipManagementSystemApp.marine.home.notFound">No marines found</span>
+    </div>
+    <div class="table-responsive" *ngIf="marines?.length > 0">
+        <table class="table table-striped">
+            <thead>
+            <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="reset.bind(this)">
+            <th jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="firstName"><span jhiTranslate="shipManagementSystemApp.marine.firstName">First Name</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="lastName"><span jhiTranslate="shipManagementSystemApp.marine.lastName">Last Name</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="email"><span jhiTranslate="shipManagementSystemApp.marine.email">Email</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="phoneNumber"><span jhiTranslate="shipManagementSystemApp.marine.phoneNumber">Phone Number</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="hireDate"><span jhiTranslate="shipManagementSystemApp.marine.hireDate">Hire Date</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="rank"><span jhiTranslate="shipManagementSystemApp.marine.rank">Rank</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="ship.id"><span jhiTranslate="shipManagementSystemApp.marine.ship">Ship</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody infinite-scroll (scrolled)="loadPage(page + 1)" [infiniteScrollDisabled]="page >= links['last']" [infiniteScrollDistance]="0">
+            <tr *ngFor="let marine of marines ;trackBy: trackId">
+                <td><a [routerLink]="['/marine', marine.id, 'view' ]">{{marine.id}}</a></td>
+                <td>{{marine.firstName}}</td>
+                <td>{{marine.lastName}}</td>
+                <td>{{marine.email}}</td>
+                <td>{{marine.phoneNumber}}</td>
+                <td>{{marine.hireDate | date:'medium'}}</td>
+                <td>{{marine.rank}}</td>
+                <td>
+                    <div *ngIf="marine.ship">
+                        <a [routerLink]="['../ship', marine.ship?.id, 'view' ]" >{{marine.ship?.id}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group">
+                        <button type="submit"
+                                [routerLink]="['/marine', marine.id, 'view' ]"
+                                class="btn btn-info btn-sm">
+                            <fa-icon [icon]="'eye'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/marine', marine.id, 'edit']"
+                                class="btn btn-primary btn-sm">
+                            <fa-icon [icon]="'pencil-alt'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', 'marine', { outlets: { popup: marine.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <fa-icon [icon]="'times'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

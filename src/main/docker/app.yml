@@ -1,7 +1,7 @@
 version: '2'
 services:
   shipmanagementsystem-app:
-    image: shipmanagementsystem
+    image: shipmanagementsystem:latest
     environment:
       - _JAVA_OPTIONS=-Xmx512m -Xms256m
       - SPRING_PROFILES_ACTIVE=prod,swagger

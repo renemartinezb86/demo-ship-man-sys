@@ -1,0 +1,47 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="shipLog">
+            <h2><span jhiTranslate="shipManagementSystemApp.shipLog.detail.title">Ship Log</span> {{shipLog.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="shipManagementSystemApp.shipLog.datetime">Datetime</span></dt>
+                <dd>
+                    <span>{{shipLog.datetime}}</span>
+                </dd>
+                <dt><span jhiTranslate="shipManagementSystemApp.shipLog.entrytext">Entrytext</span></dt>
+                <dd>
+                    <span>{{shipLog.entrytext}}</span>
+                </dd>
+                <dt><span jhiTranslate="shipManagementSystemApp.shipLog.entrytype">Entrytype</span></dt>
+                <dd>
+                    <span jhiTranslate="{{'shipManagementSystemApp.EntryType.' + shipLog.entrytype}}">{{shipLog.entrytype}}</span>
+                </dd>
+                <dt><span jhiTranslate="shipManagementSystemApp.shipLog.ship">Ship</span></dt>
+                <dd>
+                    <div *ngIf="shipLog.ship">
+                        <a [routerLink]="['/ship', shipLog.ship?.id, 'view']">{{shipLog.ship?.id}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="shipManagementSystemApp.shipLog.marine">Marine</span></dt>
+                <dd>
+                    <div *ngIf="shipLog.marine">
+                        <a [routerLink]="['/marine', shipLog.marine?.id, 'view']">{{shipLog.marine?.id}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/ship-log', shipLog.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

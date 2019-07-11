@@ -9,6 +9,12 @@
                 <dd>
                     <span>{{ship.shipName}}</span>
                 </dd>
+                <dt><span jhiTranslate="shipManagementSystemApp.ship.location">Location</span></dt>
+                <dd>
+                    <div *ngIf="ship.location">
+                        <a [routerLink]="['/location', ship.location?.id, 'view']">{{ship.location?.id}}</a>
+                    </div>
+                </dd>
             </dl>
 
             <button type="submit"
