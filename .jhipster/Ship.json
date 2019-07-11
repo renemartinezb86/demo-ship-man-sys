@@ -1,0 +1,22 @@
+{
+    "name": "Ship",
+    "fields": [
+        {
+            "fieldName": "shipName",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        }
+    ],
+    "relationships": [],
+    "changelogDate": "20190711030803",
+    "entityTableName": "ship",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}
