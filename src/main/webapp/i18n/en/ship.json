@@ -1,0 +1,22 @@
+{
+  "shipManagementSystemApp": {
+    "ship": {
+      "home": {
+        "title": "Ships",
+        "createLabel": "Create a new Ship",
+        "createOrEditLabel": "Create or edit a Ship",
+        "notFound": "No Ship found"
+      },
+      "created": "A new Ship is created with identifier {{ param }}",
+      "updated": "A Ship is updated with identifier {{ param }}",
+      "deleted": "A Ship is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Ship {{ id }}?"
+      },
+      "detail": {
+        "title": "Ship"
+      },
+      "shipName": "Ship Name"
+    }
+  }
+}
