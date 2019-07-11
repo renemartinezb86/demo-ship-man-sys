@@ -1,0 +1,53 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="marine">
+            <h2><span jhiTranslate="shipManagementSystemApp.marine.detail.title">Marine</span> {{marine.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="shipManagementSystemApp.marine.firstName">First Name</span></dt>
+                <dd>
+                    <span>{{marine.firstName}}</span>
+                </dd>
+                <dt><span jhiTranslate="shipManagementSystemApp.marine.lastName">Last Name</span></dt>
+                <dd>
+                    <span>{{marine.lastName}}</span>
+                </dd>
+                <dt><span jhiTranslate="shipManagementSystemApp.marine.email">Email</span></dt>
+                <dd>
+                    <span>{{marine.email}}</span>
+                </dd>
+                <dt><span jhiTranslate="shipManagementSystemApp.marine.phoneNumber">Phone Number</span></dt>
+                <dd>
+                    <span>{{marine.phoneNumber}}</span>
+                </dd>
+                <dt><span jhiTranslate="shipManagementSystemApp.marine.hireDate">Hire Date</span></dt>
+                <dd>
+                    <span>{{marine.hireDate}}</span>
+                </dd>
+                <dt><span jhiTranslate="shipManagementSystemApp.marine.rank">Rank</span></dt>
+                <dd>
+                    <span>{{marine.rank}}</span>
+                </dd>
+                <dt><span jhiTranslate="shipManagementSystemApp.marine.ship">Ship</span></dt>
+                <dd>
+                    <div *ngIf="marine.ship">
+                        <a [routerLink]="['/ship', marine.ship?.id, 'view']">{{marine.ship?.id}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/marine', marine.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

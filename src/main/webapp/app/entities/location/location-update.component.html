@@ -1,0 +1,51 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+            <h2 id="jhi-location-heading" jhiTranslate="shipManagementSystemApp.location.home.createOrEditLabel">Create or edit a Location</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!editForm.get('id').value">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id" formControlName="id"
+                        readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="shipManagementSystemApp.location.seaQuadrant" for="field_seaQuadrant">Sea Quadrant</label>
+                    <input type="text" class="form-control" name="seaQuadrant" id="field_seaQuadrant"
+                           formControlName="seaQuadrant"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="shipManagementSystemApp.location.friendlys" for="field_friendlys">Friendlys</label>
+                    <input type="text" class="form-control" name="friendlys" id="field_friendlys"
+                           formControlName="friendlys"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="shipManagementSystemApp.location.hostiles" for="field_hostiles">Hostiles</label>
+                    <input type="text" class="form-control" name="hostiles" id="field_hostiles"
+                           formControlName="hostiles"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="shipManagementSystemApp.location.status" for="field_status">Status</label>
+                    <input type="text" class="form-control" name="status" id="field_status"
+                           formControlName="status"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="shipManagementSystemApp.location.continent" for="field_continent">Continent</label>
+                    <select class="form-control" id="field_continent" name="continent" formControlName="continent">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="continentOption.id === editForm.get('continent').value?.id ? editForm.get('continent').value : continentOption" *ngFor="let continentOption of continents; trackBy: trackContinentById">{{continentOption.id}}</option>
+                    </select>
+                </div>
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

@@ -3,6 +3,7 @@ package com.amazon.salaunch.demo.web.rest;
 import com.amazon.salaunch.demo.ShipManagementSystemApp;
 import com.amazon.salaunch.demo.domain.Ship;
 import com.amazon.salaunch.demo.repository.ShipRepository;
+import com.amazon.salaunch.demo.service.ShipService;
 import com.amazon.salaunch.demo.web.rest.errors.ExceptionTranslator;
 
 import org.junit.jupiter.api.BeforeEach;
@@ -39,6 +40,9 @@ public class ShipResourceIT {
     private ShipRepository shipRepository;
 
     @Autowired
+    private ShipService shipService;
+
+    @Autowired
     private MappingJackson2HttpMessageConverter jacksonMessageConverter;
 
     @Autowired
@@ -57,7 +61,7 @@ public class ShipResourceIT {
     @BeforeEach
     public void setup() {
         MockitoAnnotations.initMocks(this);
-        final ShipResource shipResource = new ShipResource(shipRepository);
+        final ShipResource shipResource = new ShipResource(shipService);
         this.restShipMockMvc = MockMvcBuilders.standaloneSetup(shipResource)
             .setCustomArgumentResolvers(pageableArgumentResolver)
             .setControllerAdvice(exceptionTranslator)
@@ -184,7 +188,7 @@ public class ShipResourceIT {
     @Test
     public void updateShip() throws Exception {
         // Initialize the database
-        shipRepository.save(ship);
+        shipService.save(ship);
 
         int databaseSizeBeforeUpdate = shipRepository.findAll().size();
 
@@ -225,7 +229,7 @@ public class ShipResourceIT {
     @Test
     public void deleteShip() throws Exception {
         // Initialize the database
-        shipRepository.save(ship);
+        shipService.save(ship);
 
         int databaseSizeBeforeDelete = shipRepository.findAll().size();
 

@@ -1,0 +1,23 @@
+{
+  "shipManagementSystemApp": {
+    "continent": {
+      "home": {
+        "title": "Continents",
+        "createLabel": "Crear nuevo Continent",
+        "createOrEditLabel": "Crear o editar Continent",
+        "notFound": "No Continent found"
+      },
+      "created": "Un nuevo Continent ha sido creado con el identificador {{ param }}",
+      "updated": "Un Continent ha sido actualizado con el identificador {{ param }}",
+      "deleted": "Un Continent ha sido eliminado con el identificador {{ param }}",
+      "delete": {
+        "question": "¿Seguro que quiere eliminar Continent {{ id }}?"
+      },
+      "detail": {
+        "title": "Continent"
+      },
+      "continentName": "Continent Name",
+      "region": "Region"
+    }
+  }
+}

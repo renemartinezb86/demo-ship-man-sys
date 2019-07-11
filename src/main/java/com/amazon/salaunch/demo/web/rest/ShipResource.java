@@ -1,7 +1,7 @@
 package com.amazon.salaunch.demo.web.rest;
 
 import com.amazon.salaunch.demo.domain.Ship;
-import com.amazon.salaunch.demo.repository.ShipRepository;
+import com.amazon.salaunch.demo.service.ShipService;
 import com.amazon.salaunch.demo.web.rest.errors.BadRequestAlertException;
 
 import io.github.jhipster.web.util.HeaderUtil;
@@ -33,10 +33,10 @@ public class ShipResource {
     @Value("${jhipster.clientApp.name}")
     private String applicationName;
 
-    private final ShipRepository shipRepository;
+    private final ShipService shipService;
 
-    public ShipResource(ShipRepository shipRepository) {
-        this.shipRepository = shipRepository;
+    public ShipResource(ShipService shipService) {
+        this.shipService = shipService;
     }
 
     /**
@@ -52,7 +52,7 @@ public class ShipResource {
         if (ship.getId() != null) {
             throw new BadRequestAlertException("A new ship cannot already have an ID", ENTITY_NAME, "idexists");
         }
-        Ship result = shipRepository.save(ship);
+        Ship result = shipService.save(ship);
         return ResponseEntity.created(new URI("/api/ships/" + result.getId()))
             .headers(HeaderUtil.createEntityCreationAlert(applicationName, true, ENTITY_NAME, result.getId().toString()))
             .body(result);
@@ -73,7 +73,7 @@ public class ShipResource {
         if (ship.getId() == null) {
             throw new BadRequestAlertException("Invalid id", ENTITY_NAME, "idnull");
         }
-        Ship result = shipRepository.save(ship);
+        Ship result = shipService.save(ship);
         return ResponseEntity.ok()
             .headers(HeaderUtil.createEntityUpdateAlert(applicationName, true, ENTITY_NAME, ship.getId().toString()))
             .body(result);
@@ -87,7 +87,7 @@ public class ShipResource {
     @GetMapping("/ships")
     public List<Ship> getAllShips() {
         log.debug("REST request to get all Ships");
-        return shipRepository.findAll();
+        return shipService.findAll();
     }
 
     /**
@@ -99,7 +99,7 @@ public class ShipResource {
     @GetMapping("/ships/{id}")
     public ResponseEntity<Ship> getShip(@PathVariable String id) {
         log.debug("REST request to get Ship : {}", id);
-        Optional<Ship> ship = shipRepository.findById(id);
+        Optional<Ship> ship = shipService.findOne(id);
         return ResponseUtil.wrapOrNotFound(ship);
     }
 
@@ -112,7 +112,7 @@ public class ShipResource {
     @DeleteMapping("/ships/{id}")
     public ResponseEntity<Void> deleteShip(@PathVariable String id) {
         log.debug("REST request to delete Ship : {}", id);
-        shipRepository.deleteById(id);
+        shipService.delete(id);
         return ResponseEntity.noContent().headers(HeaderUtil.createEntityDeletionAlert(applicationName, true, ENTITY_NAME, id)).build();
     }
 }

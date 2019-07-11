@@ -8,6 +8,13 @@
       "entities": {
         "main": "Entities",
         "ship": "Ship",
+        "region": "Region",
+        "continent": "Continent",
+        "location": "Location",
+        "task": "Task",
+        "marine": "Marine",
+        "job": "Job",
+        "shipLog": "Ship Log",
         "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
       },
       "account": {

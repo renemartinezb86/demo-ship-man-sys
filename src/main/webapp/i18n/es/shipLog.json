@@ -1,0 +1,26 @@
+{
+  "shipManagementSystemApp": {
+    "shipLog": {
+      "home": {
+        "title": "Ship Logs",
+        "createLabel": "Crear nuevo Ship Log",
+        "createOrEditLabel": "Crear o editar Ship Log",
+        "notFound": "No Ship Log found"
+      },
+      "created": "Un nuevo Ship Log ha sido creado con el identificador {{ param }}",
+      "updated": "Un Ship Log ha sido actualizado con el identificador {{ param }}",
+      "deleted": "Un Ship Log ha sido eliminado con el identificador {{ param }}",
+      "delete": {
+        "question": "¿Seguro que quiere eliminar Ship Log {{ id }}?"
+      },
+      "detail": {
+        "title": "Ship Log"
+      },
+      "datetime": "Datetime",
+      "entrytext": "Entrytext",
+      "entrytype": "Entrytype",
+      "ship": "Ship",
+      "marine": "Marine"
+    }
+  }
+}
