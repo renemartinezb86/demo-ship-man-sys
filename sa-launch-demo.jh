@@ -1,0 +1,4 @@
+
+entity Ship {
+	shipName String required
+}
